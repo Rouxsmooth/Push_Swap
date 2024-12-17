@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 14:01:54 by mzaian            #+#    #+#             */
-/*   Updated: 2024/12/05 14:02:09 by mzaian           ###   ########.fr       */
+/*   Created: 2024/12/10 15:23:35 by mzaian            #+#    #+#             */
+/*   Updated: 2024/12/17 16:12:08 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	ft_isspace(int c)
-{
-	return ((c > 8 && c < 14) || c == 32);
-}
+# include "../../libft/INCLUDES/libft.h"
+
+//funcs
+
+#endif
