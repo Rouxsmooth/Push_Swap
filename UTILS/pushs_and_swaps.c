@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PS_utils1.c                                        :+:      :+:    :+:   */
+/*   pushs_and_swaps.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 15:23:09 by mzaian            #+#    #+#             */
-/*   Updated: 2024/12/17 16:10:33 by mzaian           ###   ########.fr       */
+/*   Created: 2024/12/17 16:10:37 by mzaian            #+#    #+#             */
+/*   Updated: 2024/12/18 09:57:02 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/push_swap.h"
 
-void	ft_s(t_list **stack)
-{
-	t_list	*temp;
-
-	if (!*stack || !(*stack)->next)
-		return ;
-	temp = *stack;
-	(*stack) = (*stack)->next;
-	(*stack)->next = temp;
-	return ;
-}
-
-void	ft_ss(t_list **a, t_list **b)
-{
-	return (ft_s(a), ft_s(b));
-}
-
-void	ft_p(t_list **from, t_list **to)
+void	ft_push(t_list **from, t_list **to)
 {
 	t_list	*temp;
 
@@ -41,21 +24,30 @@ void	ft_p(t_list **from, t_list **to)
 	return ;
 }
 
-void	ft_r(t_list **stack)
+void	ft_p(t_list **a, t_list **b, int which)
 {
-	t_list	*last;
+	if (which == 'a')
+		return (write(1, &"pa\n", 3), ft_push(a, b));
+	return (write(1, &"pb\n", 3), ft_push(b, a));
+}
+
+void	ft_swap(t_list **stack)
+{
 	t_list	*temp;
 
-	if (!*stack)
+	if (!*stack || !(*stack)->next)
 		return ;
 	temp = *stack;
-	*stack = (*stack)->next;
-	last = ft_lstlast(*stack);
-	last->next = temp;
+	(*stack) = (*stack)->next;
+	(*stack)->next = temp;
 	return ;
 }
 
-void	ft_rr(t_list **a, t_list **b)
+void	ft_s(t_list **a, t_list **b, int which)
 {
-	return (ft_r(a), ft_r(b));
+	if (which == 'a')
+		return (write(1, &"sa\n", 3), ft_swap(a));
+	if (which == 'b')
+		return (write(1, &"sb\n", 3), ft_swap(b));
+	return (write(1, &"ss\n", 3), ft_swap(a), ft_swap(b));
 }
