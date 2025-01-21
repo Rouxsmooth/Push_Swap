@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:10:37 by mzaian            #+#    #+#             */
-/*   Updated: 2024/12/18 09:57:02 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/01/21 15:55:43 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ void	ft_swap(t_list **stack)
 {
 	t_list	*temp;
 
-	if (!*stack || !(*stack)->next)
-		return ;
+	if (!(*stack))
+		return;
+	if (!(*stack)->next)
+		return;
 	temp = *stack;
-	(*stack) = (*stack)->next;
+	*stack = (*stack)->next;
+	temp->next = (*stack)->next;
 	(*stack)->next = temp;
-	return ;
 }
 
 void	ft_s(t_list **a, t_list **b, int which)

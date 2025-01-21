@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   rotates.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:31:05 by mzaian            #+#    #+#             */
-/*   Updated: 2024/12/18 09:56:30 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/01/21 15:58:49 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 void	ft_revever_rotate(t_list **stack)
 {
-	t_list	*last;
+	t_list	*curr;
 	t_list	*temp;
 
-	if (!*stack || !(*stack)->next)
+	if (!(*stack) || !(*stack)->next)
 		return ;
-	temp = *stack;
-	last = ft_lstlast(*stack);
-	(*stack)->next = last;
-	last = *stack;
+	temp = ft_lstlast(*stack);
+	temp->next = *stack;
+	curr = *stack;
+	while (curr->next != temp)
+		curr = curr->next;
+	curr->next = NULL;
+	*stack = temp;
 }
-// fix rev rotate, here it loops and last is indeed before first, but not 
-// first, it's kind of -1 ?
 
 void	ft_rr(t_list **a, t_list **b, int which)
 {
@@ -38,17 +39,16 @@ void	ft_rr(t_list **a, t_list **b, int which)
 
 void	ft_rotate(t_list **stack)
 {
-	t_list	*last;
 	t_list	*temp;
 
-	if (!*stack || !(*stack)->next)
+	if (!(*stack) || !(*stack)->next)
 		return ;
 	temp = *stack;
-	*stack = (*stack)->next;
-	last = ft_lstlast(*stack);
-	last->next = temp;
-	return ;
+	ft_lstadd_back(stack, temp);
+	*stack = temp->next;
+	temp->next = NULL;
 }
+
 
 void	ft_r(t_list **a, t_list **b, int which)
 {
