@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2024/12/18 16:57:58 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/01/29 05:21:43 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@ void	free_splited(char **array, int error_index)
 		i++;
 	}
 	return (ft_del(array));
-}
-
-int	has_alpha(char *str)
-{
-	while (*str)
-	{
-		if (ft_isalpha(*str))
-			return (1);
-		(*str)++;
-	}
-	return (0);
 }
 
 int	split_parsing(char **argv, int *array)
@@ -64,11 +53,11 @@ int	acavparsing(int argc, char **argv, int *array)
 	error_msg = "Error on argument type\n";
 	while (i < argc - 1)
 	{
-		if (ft_isdigit(argv[i + 1]))
-			array[i] = ft_atoi(argv[i + 1]);
+		if (has_elsethan(argv[i + 1], &ft_isdigit))
+			return (display_error(error_msg), 0);
+		array[i] = ft_atoi(argv[i + 1]);
+		ft_printf("has ? %d in '%s' : %d\n", has_elsethan(argv[i + 1], &ft_isdigit), argv[i + 1], array[i]);
 		i++;	
 	}
-	if (!ft_isdigit(argv[i + 1]))
-		return (display_error(error_msg), 0);
 	return (1);
 }

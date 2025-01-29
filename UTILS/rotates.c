@@ -6,13 +6,13 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:31:05 by mzaian            #+#    #+#             */
-/*   Updated: 2025/01/21 15:58:49 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/01/29 04:27:55 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/push_swap.h"
 
-void	ft_revever_rotate(t_list **stack)
+void	ft_reverse_rotate(t_list **stack)
 {
 	t_list	*curr;
 	t_list	*temp;
@@ -31,10 +31,10 @@ void	ft_revever_rotate(t_list **stack)
 void	ft_rr(t_list **a, t_list **b, int which)
 {
 	if (which == 'a')
-		return (write(1, &"rra\n", 4), ft_reverse_rotate(a));
+		return ((write(1, &"rra\n", 4)), ft_reverse_rotate(a));
 	if (which == 'b')
 		return (write(1, &"rrb\n", 4), ft_reverse_rotate(b));
-	return (write(1, &"rrr\n", 4), ft_reverse_rotate(a), ft_reverse_rotate(b));
+	return ((write(1, &"rrr\n", 4), ft_reverse_rotate(a)), ft_reverse_rotate(b));
 }
 
 void	ft_rotate(t_list **stack)

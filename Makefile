@@ -1,16 +1,19 @@
 NAME = push_swap
 LIBNAME = $(NAME).a
 CFLAGS = -Wall -Werror -Wextra
-CFILES = 
+INCLUDE_LIBFT = -L ../libft -l:libft.a
+CFILES = UTILS/parser.c UTILS/push_swap.c UTILS/pushs_and_swaps.c UTILS/rotates.c UTILS/sort.c
 
 OFILES = $(CFILES:.c=.o)
 
 $(LIBNAME) : $(OFILES)
+	@make -C ../libft
 	@rm -f $(LIBNAME)
+	@cp ../libft/libft.a $(LIBNAME)
 	@ar -rc $(LIBNAME) $(OFILES)
 
 %.o : %.c compiled
-	@cc $(CFLAGS) -I INCLUDES -c $< -o $@
+	@cc $(CFLAGS) -I INCLUDES -c $< -o $@ $(INCLUDE_LIBFT)
 
 compiled :
 	@echo "All $(LIBNAME) files compiled."
@@ -33,15 +36,4 @@ allc: $(LIBNAME) clean
 rec: fclean allc
 
 rerun: rec
-	@cc main.c -L . -l:$(LIBNAME) -o $(NAME) && ./$(NAME) 
-
-rerunwithflags: rec
-	@cc $(CFLAGS) main.c -L . -l:$(LIBNAME) -o $(NAME) && ./$(NAME) 
-
-rerunvalgrind: rec
-	@cc main.c -L . -l:$(LIBNAME) -o $(NAME) && valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 
-
-rerunvalgrindwithflags: rec
-	@cc $(CFLAGS) main.c -L . -l:$(LIBNAME) -o $(NAME) && valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 
-
-re : fclean $(LIBNAME)
+	@cc UTILS/push_swap.c -L . -l:$(LIBNAME) $(INCLUDE_LIBFT) -o $(NAME) 
