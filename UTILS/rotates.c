@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:31:05 by mzaian            #+#    #+#             */
-/*   Updated: 2025/01/29 04:27:55 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/04 00:58:53 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_reverse_rotate(t_list **stack)
 		curr = curr->next;
 	curr->next = NULL;
 	*stack = temp;
+	return ;
 }
 
 void	ft_rr(t_list **a, t_list **b, int which)
@@ -34,7 +35,8 @@ void	ft_rr(t_list **a, t_list **b, int which)
 		return ((write(1, &"rra\n", 4)), ft_reverse_rotate(a));
 	if (which == 'b')
 		return (write(1, &"rrb\n", 4), ft_reverse_rotate(b));
-	return ((write(1, &"rrr\n", 4), ft_reverse_rotate(a)), ft_reverse_rotate(b));
+	return ((write(1, &"rrr\n", 4),
+			ft_reverse_rotate(a)), ft_reverse_rotate(b));
 }
 
 void	ft_rotate(t_list **stack)
@@ -47,8 +49,8 @@ void	ft_rotate(t_list **stack)
 	ft_lstadd_back(stack, temp);
 	*stack = temp->next;
 	temp->next = NULL;
+	return ;
 }
-
 
 void	ft_r(t_list **a, t_list **b, int which)
 {

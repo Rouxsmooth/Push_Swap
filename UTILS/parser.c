@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2025/01/29 05:21:43 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/04 01:03:36 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,45 @@ void	free_splited(char **array, int error_index)
 	return (ft_del(array));
 }
 
+int	already_exists(int *array, int val, int size)
+{
+	int	i;
+
+	if (!array || size < 2)
+		return (0);
+	i = 0;
+	while (i < size)
+	{
+		if (array[i++] == val)
+			return (1);
+	}
+	return (0);
+}
+
 int	split_parsing(char **argv, int *array)
 {
 	char	**parsing;
 	int		i;
 	char	*error_msg;
 
-	i = 0;
-	error_msg = "Error on argument type\n";
+	error_msg = "Argument type";
 	parsing = ft_split(argv[1], ' ');
 	if (!parsing)
-		return (display_error("Error on allocation\n"), 0);
+		return (display_error("Allocation error."), 0);
+	i = 0;
 	while (parsing[i])
-		if (!has_alpha(parsing[i]))
+	{
+		if (!has_alpha(parsing[i]) && !already_exists(array, array[i], i))
 			array[i] = ft_atoi(parsing[i]);
+		i++;
+	}
+	while (1)
+		;
 	if (!has_alpha(parsing[i]))
 		return ((free_splited(parsing, i), display_error(error_msg)), 0);
+	if (already_exists(array, array[i], i))
+		return ((free_splited(parsing, i),
+				display_error("Value already exists.")), 0);
 	return (1);
 }
 
@@ -50,14 +73,15 @@ int	acavparsing(int argc, char **argv, int *array)
 	char	*error_msg;
 
 	i = 0;
-	error_msg = "Error on argument type\n";
+	error_msg = "Argument type";
 	while (i < argc - 1)
 	{
 		if (has_elsethan(argv[i + 1], &ft_isdigit))
 			return (display_error(error_msg), 0);
 		array[i] = ft_atoi(argv[i + 1]);
-		ft_printf("has ? %d in '%s' : %d\n", has_elsethan(argv[i + 1], &ft_isdigit), argv[i + 1], array[i]);
-		i++;	
+		if (already_exists(array, array[i], i))
+			return (display_error("Value already exists"), 0);
+		i++;
 	}
 	return (1);
 }

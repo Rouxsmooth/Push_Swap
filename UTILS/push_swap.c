@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:33:58 by mzaian            #+#    #+#             */
-/*   Updated: 2025/01/29 10:10:50 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/04 01:13:46 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,48 +21,81 @@ int	*parse(int argc, char **argv)
 	array = (int *) ft_calloc(argc, sizeof(int));
 	if (!array)
 		return (display_error("Memory allocation error\n"), (int *) NULL);
-	if (ft_strchr(argv[1],  ' '))
+	if (ft_strchr(argv[1], ' '))
 	{
 		if (!split_parsing(argv, array))
 			return ((ft_del(array), display_error("Parsing error")),
-					(int *) NULL);
+				(int *) NULL);
 	}
 	else
 	{
 		if (!acavparsing(argc, argv, array))
 			return ((ft_del(array), display_error("Parsing error")),
-					(int *) NULL);
+				(int *) NULL);
 	}
 	return (array);
+}
+
+void	print_list(t_list *list, char *name)
+{
+	t_list	*current;
+	int		*value;
+
+	current = list;
+	ft_printf("%s: ", name);
+	while (current)
+	{
+		value = (int *)(current->content);
+		ft_printf("%d -> ", *value);
+		current = current->next;
+	}
+	ft_printf("NULL\n");
+}
+
+void	set_stack(int argc, int *array, t_list **a, t_list **b)
+{
+	int	i;
+	int	*val;
+
+	i = 0;
+	while (i < argc - 1)
+	{
+		val = (int *) ft_calloc(1, sizeof(int));
+		if (!array)
+		{
+			ft_del(array);
+			ft_lstclear(a, ft_del);
+			ft_del(a);
+			ft_del(b);
+			exit(0);
+		}
+		*val = array[i++];
+		ft_lstadd_back(a, ft_lstnew(val));
+	}
+	return ;
 }
 
 int	main(int argc, char **argv)
 {
 	int		*array;
-	int		*val;
 	t_list	**a;
 	t_list	**b;
-	int		i;
 
+	if (argc <= 2)
+		return (0);
 	array = parse(argc, argv);
 	if (!array)
 		return (1);
-	i = 0;
 	a = (t_list **) ft_calloc(1, sizeof(t_list *));
 	b = (t_list **) ft_calloc(1, sizeof(t_list *));
-	while (i < argc - 1)
-	{
-		val = (int *) ft_realloc(1, sizeof(int));
-		if (!array)
-			return ((ft_del(array), ft_lstclear(a, ft_del)), 1);
-		*val = array[i++];
-		ft_lstadd_back(a, ft_lstnew(val));
-	}
+	set_stack(argc, array, a, b);
 	if (argc - 1 > 3)
-		turk_sort(a, b, find_median(array, argc - 1));
+		turk_sort(a, b, find_median(array, argc - 1), ft_lstsize(*a));
 	else
-		turk_sort(a, b, 0);
-	return ((ft_del(array), ft_lstclear(a, ft_del)), 0);
+		turk_sort(a, b, 0, ft_lstsize(*a));
+	print_list(*a, "a");
+	print_list(*b, "b");
+	return ((ft_del(array), ft_lstclear(a, ft_del), ft_del(a), ft_del(b)), 0);
 }
 
 // while (i < argc - 1)

@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:10:37 by mzaian            #+#    #+#             */
-/*   Updated: 2025/01/21 15:55:43 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/04 01:04:38 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	ft_push(t_list **from, t_list **to)
 {
 	t_list	*temp;
 
-	if (!*to)
+	if (!*from)
 		return ;
 	temp = *from;
-	temp->next = *to;
-	(*from) = (*from)->next;
+	*from = (*from)->next;
+	temp->next = NULL;
+	ft_lstadd_front(to, temp);
 	return ;
 }
 
@@ -36,13 +37,14 @@ void	ft_swap(t_list **stack)
 	t_list	*temp;
 
 	if (!(*stack))
-		return;
+		return ;
 	if (!(*stack)->next)
-		return;
+		return ;
 	temp = *stack;
 	*stack = (*stack)->next;
 	temp->next = (*stack)->next;
 	(*stack)->next = temp;
+	return ;
 }
 
 void	ft_s(t_list **a, t_list **b, int which)
