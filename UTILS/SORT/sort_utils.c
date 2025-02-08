@@ -6,20 +6,34 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 01:05:40 by mzaian            #+#    #+#             */
-/*   Updated: 2025/02/04 01:06:13 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/08 18:22:46 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/push_swap.h"
+#include "../../INCLUDES/push_swap.h"
 
-int	is_sorted(t_list *stack)
+int	is_sorted(t_stack *stack)
 {
-	t_list	*temp;
+	t_stack	*temp;
 
 	temp = stack;
 	while (temp && temp->next)
 	{
 		if (*(int *)temp->content > *(int *)temp->next->content)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
+int	is_reverse_sorted(t_stack *stack)
+{
+	t_stack	*temp;
+
+	temp = stack;
+	while (temp && temp->next)
+	{
+		if (*(int *)temp->content < *(int *)temp->next->content)
 			return (0);
 		temp = temp->next;
 	}
@@ -52,12 +66,12 @@ int	find_median(int *array, int len)
 	return (temp);
 }
 
-void	partition_a(t_list **a, t_list **b, int median)
+void	partition_a(t_stack **a, t_stack **b, int median)
 {
 	int		len;
 	int		i;
 
-	len = ft_lstsize(*a);
+	len = stacksize(*a);
 	i = 0;
 	while (i < len)
 	{

@@ -6,11 +6,11 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2025/02/04 01:03:36 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/08 18:23:34 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../INCLUDES/push_swap.h"
+#include "../../INCLUDES/push_swap.h"
 
 void	free_splited(char **array, int error_index)
 {
@@ -70,6 +70,7 @@ int	split_parsing(char **argv, int *array)
 int	acavparsing(int argc, char **argv, int *array)
 {
 	int		i;
+	int		j;
 	char	*error_msg;
 
 	i = 0;
@@ -77,11 +78,43 @@ int	acavparsing(int argc, char **argv, int *array)
 	while (i < argc - 1)
 	{
 		if (has_elsethan(argv[i + 1], &ft_isdigit))
-			return (display_error(error_msg), 0);
+		{
+			j = 0;
+			while (argv[i + 1][j])
+			{
+				if (!ft_isdigit(argv[i + 1][j]) && argv[i + 1][j] != '-')
+					return (display_error(error_msg), 0);
+				j++;
+			}
+		}
 		array[i] = ft_atoi(argv[i + 1]);
 		if (already_exists(array, array[i], i))
 			return (display_error("Value already exists"), 0);
 		i++;
 	}
 	return (1);
+}
+
+int	*parse(int argc, char **argv)
+{
+	int	*array;
+
+	if (argc < 2)
+		return (display_error("Try ./push_swap <numbers>\n"), (int *) NULL);
+	array = (int *) ft_calloc(argc, sizeof(int));
+	if (!array)
+		return (display_error("Memory allocation error\n"), (int *) NULL);
+	if (ft_strchr(argv[1], ' '))
+	{
+		if (!split_parsing(argv, array))
+			return ((ft_del(array), display_error("Parsing error")),
+				(int *) NULL);
+	}
+	else
+	{
+		if (!acavparsing(argc, argv, array))
+			return ((ft_del(array), display_error("Parsing error")),
+				(int *) NULL);
+	}
+	return (array);
 }

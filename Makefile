@@ -2,7 +2,7 @@ NAME = push_swap
 LIBNAME = $(NAME).a
 CFLAGS = -Wall -Werror -Wextra
 INCLUDE_LIBFT = -L ../libft -l:libft.a
-CFILES = UTILS/parser.c UTILS/push_swap.c UTILS/sort_utils.c UTILS/pushs_and_swaps.c UTILS/rotates.c UTILS/sort.c
+CFILES = UTILS/PARSER/parser.c UTILS/push_swap.c UTILS/SORT/stack_utils.c UTILS/SORT/stack_utils2.c UTILS/SORT/sort_utils.c UTILS/RULES/pushs_and_swaps.c UTILS/RULES/rotates.c UTILS/SORT/sort.c
 
 OFILES = $(CFILES:.c=.o)
 
@@ -37,6 +37,3 @@ rec: fclean allc
 
 rerun: rec
 	@cc UTILS/push_swap.c -L . -l:$(LIBNAME) $(INCLUDE_LIBFT) -o $(NAME) -g
-
-reruntest: rec
-	@cc UTILS/testmain.c -L . -l:$(LIBNAME) $(INCLUDE_LIBFT) -o $(NAME)
