@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils_2.c                                    :+:      :+:    :+:   */
+/*   stack_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:50:53 by mzaian            #+#    #+#             */
-/*   Updated: 2025/02/08 18:24:10 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/08 19:08:30 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ t_stack	*stacklast(t_stack *stack)
 	return (stack);
 }
 
-void	print_stack(t_stack *list, char *name)
+void	print_stack(t_stack *stack, char *name)
 {
 	t_stack	*current;
 	int		*value;
 
-	current = list;
+	current = stack;
 	ft_printf("%s: ", name);
 	while (current)
 	{
@@ -44,13 +44,13 @@ void	set_indexes(t_stack **first_node, int size)
 	t_stack	*smallest_node;
 	t_stack	*tmp;
 	int		index;
-	int		smallest;
+	long	smallest;
 	int		found;
 
 	index = 0;
 	while (index < size)
 	{
-		smallest = 2147483647;
+		smallest = 2147483648;
 		found = 0;
 		tmp = *first_node;
 		while (tmp)

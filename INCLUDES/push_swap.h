@@ -6,14 +6,14 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:23:35 by mzaian            #+#    #+#             */
-/*   Updated: 2025/02/08 18:25:06 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/08 18:49:06 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../../libft/INCLUDES/libft.h"
+# include "../libft/INCLUDES/libft.h"
 
 typedef struct s_stack
 {
@@ -59,6 +59,6 @@ void	radix_sort(t_stack **a, t_stack **b, int size);
 void	reverse_sort_three(t_stack **stack);
 
 /* testing */
-void	print_stack(t_stack *list, char *name);
+void	print_stack(t_stack *stack, char *name);
 
 #endif

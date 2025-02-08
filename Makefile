@@ -36,4 +36,22 @@ allc: $(LIBNAME) clean
 rec: fclean allc
 
 rerun: rec
-	@cc UTILS/push_swap.c -L . -l:$(LIBNAME) $(INCLUDE_LIBFT) -o $(NAME) -g
+	@cc UTILS/push_swap.c -L . -l:$(LIBNAME) $(INCLUDE_LIBFT) -o $(NAME)
+
+test100:
+	@bash -c 'ARG="$$(seq -10000 10000 | shuf | head -n 100 | tr "\n" " ")"; \
+	./push_swap $$ARG'
+
+checker100:
+	@bash -c 'ARG="$$(seq -10000 10000 | shuf | head -n 100 | tr "\n" " ")"; \
+	./push_swap $$ARG | ./checker_linux $$ARG'
+
+test500:
+	@bash -c 'ARG="$$(seq -10000 10000 | shuf | head -n 500 | tr "\n" " ")"; \
+	./push_swap $$ARG'
+
+checker500:
+	@bash -c 'ARG="$$(seq -10000 10000 | shuf | head -n 500 | tr "\n" " ")"; \
+	./push_swap $$ARG | ./checker_linux $$ARG'
+
+.PHONY: test100 checker100 checker500 test500

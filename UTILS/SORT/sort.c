@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 04:03:51 by mzaian            #+#    #+#             */
-/*   Updated: 2025/02/08 18:10:40 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/02/08 19:43:57 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ void	reverse_sort_three(t_stack **stack)
 	if (!(*stack)->next->next)
 	{
 		if (first < second)
-			ft_s(stack, NULL, 'a');
+			ft_s(NULL, stack, 'b');
 		return ;
 	}
 	third = *(int *)(*stack)->next->next->content;
 	if (is_sorted(*stack))
-		return (ft_r(stack, NULL, 'a'), ft_s(stack, NULL, 'a'));
+		return (ft_r(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));
 	else if (first < second && second > third && first < third)
-		return (ft_r(stack, NULL, 'a'));
+		return (ft_r(NULL, stack, 'b'));
 	else if (first > second && second < third && first > third)
-		return (ft_rr(stack, NULL, 'a'), ft_s(stack, NULL, 'a'));
+		return (ft_rr(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));
 	else if (first > second && second < third && third < second)
-		return (ft_rr(stack, NULL, 'a'));
+		return (ft_rr(NULL, stack, 'b'));
 	else if (first < second && second > third && first > third)
-		return (ft_s(stack, NULL, 'a'));
+		return (ft_s(NULL, stack, 'b'));
 }
 
 void	sort_three(t_stack **stack)
@@ -85,14 +85,14 @@ void	radix_sort(t_stack **a, t_stack **b, int size)
 	while (!is_sorted(*a))
 	{
 		count = 0;
-		while (*a && count++ < size)
+		while (*a && count++ < size && !is_sorted(*a))
 		{
-			if (((*a)->index & bit_pos) == 0)
+			if (!((*a)->index & bit_pos))
 				ft_p(a, b, 'b');
 			else
 				ft_r(a, NULL, 'a');
 		}
-		while (*b != NULL)
+		while (*b)
 			ft_p(a, b, 'a');
 		bit_pos *= 2;
 	}
