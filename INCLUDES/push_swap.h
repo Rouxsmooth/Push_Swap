@@ -6,14 +6,14 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:23:35 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/26 13:35:51 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/26 15:17:33 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft/INCLUDES/libft.h"
+# include "libft/INCLUDES/libft.h"
 
 typedef struct s_stack
 {
@@ -39,6 +39,9 @@ t_stack	*stacklast(t_stack *stack);
 int		split_parsing(char **argv, int *array);
 int		acavparsing(int argc, char **argv, int *array);
 int		*parse(int argc, char **argv);
+void	error(void);
+void	free_splited(char **array, int error_index);
+int		already_exists(int *array, int val, int size);
 
 /* sort_utils */
 int		is_sorted(t_stack *stack);

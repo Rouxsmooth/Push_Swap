@@ -3,7 +3,7 @@ LIBNAME = $(NAME).a
 CFLAGS = -Wall -Werror -Wextra
 LIBFT_DIR = INCLUDES/libft
 INCLUDE_LIBFT = -L $(LIBFT_DIR) -l:libft.a
-CFILES = UTILS/PARSER/parser.c UTILS/push_swap.c UTILS/SORT/stack_utils.c UTILS/SORT/stack_utils2.c UTILS/SORT/sort_utils.c UTILS/RULES/pushs_and_swaps.c UTILS/RULES/rotates.c UTILS/SORT/sort.c
+CFILES = UTILS/PARSER/parser.c UTILS/PARSER/parser_utils.c UTILS/push_swap.c UTILS/SORT/stack_utils.c UTILS/SORT/stack_utils2.c UTILS/SORT/sort_utils.c UTILS/RULES/pushs_and_swaps.c UTILS/RULES/rotates.c UTILS/SORT/sort.c
 
 OFILES = $(CFILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:33:58 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/26 13:34:18 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/26 15:21:42 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int	main(int argc, char **argv)
 	a = (t_stack **) ft_calloc(1, sizeof(t_stack *));
 	b = (t_stack **) ft_calloc(1, sizeof(t_stack *));
 	set_stacks(argc, array, a, b);
+	if (is_sorted(*a))
+		return ((ft_del(array), stackclear(a, ft_del),
+				stackclear(b, ft_del), ft_del(a), ft_del(b)), 0);
 	size = stacksize(*a);
 	if (size <= 3)
 		sort_three(a);
