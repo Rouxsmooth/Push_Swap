@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/31 12:00:51 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/31 15:11:42 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 int	*split_parsing(char **argv, int *argc)
 {
-	int		*array;;
+	int		*array;
 	char	**parsing;
 	int		i;
 
 	parsing = ft_split(argv[1], ' ');
 	if (!parsing)
-		return (error(), (int *)NULL);
+		return (error(), (int *) NULL);
 	*argc = 0;
-	while(parsing[*argc])
+	while (parsing[*argc])
 		(*argc)++;
 	(*argc)++;
-	array = (int *)ft_calloc(*argc, sizeof(int));
+	array = (int *) ft_calloc(*argc, sizeof(int));
 	i = 0;
 	while (parsing[i])
 	{
-		if (already_exists(array, ft_atol(parsing[i]), i) || has_alpha(parsing[i]) || overflows(ft_atol(parsing[i])))
-			return (free_splited(parsing), ft_del(array), error(), (int *)NULL);
+		if (already_exists(array, ft_atol(parsing[i]), i)
+			|| has_alpha(parsing[i]) || overflows(ft_atol(parsing[i])))
+			return (free_splited(parsing),
+				ft_del(array), error(), (int *) NULL);
 		array[i] = ft_atoi(parsing[i]);
 		i++;
 	}
@@ -51,14 +53,15 @@ int	acavparsing(int argc, char **argv, int *array)
 			j = 0;
 			while (argv[i + 1][j])
 			{
-				if (!ft_isdigit(argv[i + 1][j]) && argv[i + 1][j] != '-')
+				if (!ft_isdigit(argv[i + 1][j]) && argv[i + 1][j] != '-'
+					&& ft_isdigit(argv[i + 1][j]))
 					return (error(), 0);
 				j++;
 			}
 		}
 		if (overflows(ft_atol(argv[i + 1])))
 			return (error(), 0);
-		if (already_exists(array, ft_atoi(argv[i + 1]), i + 1))
+		if (already_exists(array, ft_atoi(argv[i + 1]), i))
 			return (error(), 0);
 		array[i] = ft_atoi(argv[i + 1]);
 		i++;
@@ -72,8 +75,8 @@ int	*parse(int *argc, char **argv)
 
 	if (*argc < 2)
 		return (error(), (int *) NULL);
-	if (ft_strchr(argv[1], ' '))
-		return(split_parsing(argv, argc));
+	if (ft_strchr(argv[1], ' ') && *argc == 2)
+		return (split_parsing(argv, argc));
 	else
 	{
 		array = (int *)ft_calloc(*argc, sizeof(int));

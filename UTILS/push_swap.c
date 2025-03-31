@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:33:58 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/31 12:02:47 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/31 15:12:24 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int	main(int argc, char **argv)
 	set_stacks(argc, array, a, b);
 	if (is_sorted(*a))
 		return ((ft_del(array), stackclear(a, ft_del),
-	stackclear(b, ft_del), ft_del(a), ft_del(b)), 0);
+				stackclear(b, ft_del), ft_del(a), ft_del(b)), 0);
 	if (stacksize(*a) <= 3)
 		sort_three(a);
 	else
 		radix_sort(a, b, stacksize(*a));
 	return ((ft_del(array), stackclear(a, ft_del),
-	stackclear(b, ft_del), ft_del(a), ft_del(b)), 0);
+			stackclear(b, ft_del), ft_del(a), ft_del(b)), 0);
 }
 //print_stack(*b, "b");
 //print_stack(*a, "a");

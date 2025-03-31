@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:01:13 by m.zaian           #+#    #+#             */
-/*   Updated: 2025/03/31 10:24:31 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/31 15:12:48 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	ft_atoi(const char *nptr)
 
 long	ft_atol(const char *nptr)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	nbr;
 
 	sign = 1;
@@ -63,7 +63,6 @@ long	ft_atol(const char *nptr)
 	}
 	return (nbr * sign);
 }
-
 
 /*int	main(void)
 {
