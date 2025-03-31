@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 03:06:55 by m.zaian           #+#    #+#             */
-/*   Updated: 2025/01/23 14:16:22 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/31 10:38:22 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	ft_isalpha(int c)
 
 int	has_alpha(char *str)
 {
-	while (*str && !ft_isalpha(*str))
-		str++;
-	return (ft_isalpha(*str));
+	int	i;
+
+	i = 0;
+	while (str[i] && !ft_isalpha(str[i]))
+		i++;
+	return (ft_isalpha(str[i]));
 }

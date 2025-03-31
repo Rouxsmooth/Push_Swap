@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:23:35 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/26 15:17:33 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/31 11:46:19 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ void	set_stacks(int argc, int *array, t_stack **a, t_stack **b);
 t_stack	*stacklast(t_stack *stack);
 
 /* parser */
-int		split_parsing(char **argv, int *array);
+int		*split_parsing(char **argv, int *argc);
 int		acavparsing(int argc, char **argv, int *array);
-int		*parse(int argc, char **argv);
+int		*parse(int *argc, char **argv);
 void	error(void);
-void	free_splited(char **array, int error_index);
+void	free_splited(char **array);
 int		already_exists(int *array, int val, int size);
+int		overflows(long nbr);
 
 /* sort_utils */
 int		is_sorted(t_stack *stack);

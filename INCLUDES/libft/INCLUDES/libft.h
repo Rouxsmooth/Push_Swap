@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:23:02 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/25 15:28:42 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/03/31 10:24:46 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_lstsize(t_list *lst);
 //MATH
 size_t	ft_abs(long nbr);
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 int		ft_intternary(int i1, int i2, int condition);
 int		ft_min(int i1, int i2);
 int		ft_max(int i1, int i2);
