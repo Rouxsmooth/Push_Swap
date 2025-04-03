@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/31 15:11:42 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/03 12:35:56 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	acavparsing(int argc, char **argv, int *array)
 			while (argv[i + 1][j])
 			{
 				if (!ft_isdigit(argv[i + 1][j]) && argv[i + 1][j] != '-'
-					&& ft_isdigit(argv[i + 1][j]))
+					&& !ft_isspace(argv[i + 1][j]))
 					return (error(), 0);
 				j++;
 			}
@@ -73,8 +73,6 @@ int	*parse(int *argc, char **argv)
 {
 	int	*array;
 
-	if (*argc < 2)
-		return (error(), (int *) NULL);
 	if (ft_strchr(argv[1], ' ') && *argc == 2)
 		return (split_parsing(argv, argc));
 	else

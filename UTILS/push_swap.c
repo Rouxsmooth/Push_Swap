@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:33:58 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/31 17:22:20 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/03 12:36:03 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int argc, char **argv)
 	t_stack	**a;
 	t_stack	**b;
 
-	if (argc < 2)
-		return (0);
 	array = parse(&argc, argv);
 	if (!array)
 		return (1);
