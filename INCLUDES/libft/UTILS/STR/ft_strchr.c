@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 12:14:10 by m.zaian           #+#    #+#             */
-/*   Updated: 2025/03/21 10:07:13 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/14 15:30:51 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ char	*ft_strchr(const char *s, int c)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return NULL;
+	if (!s[i])
+		return (NULL);
 	while (s[i] && s[i] != (unsigned char) c)
 		i++;
 	if (s[i] == (unsigned char) c)
