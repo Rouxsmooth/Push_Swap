@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 04:03:51 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/14 15:55:10 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/15 01:23:22 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	reverse_sort_three(t_stack **stack)
 			ft_s(NULL, stack, 'b');
 		return ;
 	}
-	//print_stack(*stack, "b");
 	third = *(int *)(*stack)->next->next->content;
 	if (is_sorted(*stack))
 		return (ft_r(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));

@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:33:58 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/14 15:35:51 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/15 01:23:42 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 		sort_three(a);
 	else if (size <= 6)
 		sort_six(a, b, find_median(array, argc));
-	else	
+	else
 		radix_sort(a, b, stacksize(*a));
 	return ((ft_del(array), stackclear(a, ft_del),
 			stackclear(b, ft_del), ft_del(a), ft_del(b)), 0);

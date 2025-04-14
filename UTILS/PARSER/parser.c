@@ -6,11 +6,35 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/14 15:34:05 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/15 01:55:45 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../INCLUDES/push_swap.h"
+
+int	right_format_input(char *str)
+{
+	int	i;
+	int	has_nbrs;
+
+	if (!has_digits(str))
+		return (0);
+	i = 0;
+	has_nbrs = 0;
+	while (str[i])
+	{
+		if ((str[i] == '-' || str[i] == '+') && i != 0)
+			return (0);
+		if (ft_isdigit(str[i]))
+			has_nbrs = 1;
+		if (ft_isspace(str[i]) && has_nbrs)
+			return (0);
+		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]) && has_nbrs)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	*split_parsing(char **argv, int *argc)
 {
@@ -30,7 +54,8 @@ int	*split_parsing(char **argv, int *argc)
 	while (parsing[i])
 	{
 		if (already_exists(array, ft_atol(parsing[i]), i)
-			|| has_alpha(parsing[i]) || overflows(ft_atol(parsing[i])))
+			|| has_alpha(parsing[i]) || overflows(ft_atol(parsing[i]))
+			|| !right_format_input(parsing[i]))
 			return (free_splited(parsing),
 				ft_del(array), error(), (int *) NULL);
 		array[i] = ft_atoi(parsing[i]);
@@ -43,22 +68,13 @@ int	*split_parsing(char **argv, int *argc)
 int	acavparsing(int argc, char **argv, int *array)
 {
 	int		i;
-	int		j;
 
 	i = 0;
 	while (i < argc - 1)
 	{
 		if (has_elsethan(argv[i + 1], &ft_isdigit))
-		{
-			j = 0;
-			while (argv[i + 1][j])
-			{
-				if (!ft_isdigit(argv[i + 1][j]) && argv[i + 1][j] != '-'
-					&& !ft_isspace(argv[i + 1][j]))
-					return (error(), 0);
-				j++;
-			}
-		}
+			if (!right_format_input(argv[i + 1]))
+				return (error(), 0);
 		if (overflows(ft_atol(argv[i + 1])))
 			return (error(), 0);
 		if (already_exists(array, ft_atoi(argv[i + 1]), i))
