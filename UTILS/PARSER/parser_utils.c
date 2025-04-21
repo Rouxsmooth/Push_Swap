@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:16:25 by mzaian            #+#    #+#             */
-/*   Updated: 2025/03/31 13:16:42 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/21 20:55:06 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	return (ft_putstr_fd("Error\n", 1), (void) 0);
+	return (ft_putstr_fd("Error\n", 2), (void) 0);
 }
 
 void	free_splited(char **array)
