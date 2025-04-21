@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 04:03:51 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/15 01:23:22 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/21 13:34:43 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void	reverse_sort_three(t_stack **stack)
 	}
 	third = *(int *)(*stack)->next->next->content;
 	if (is_sorted(*stack))
-		return (ft_r(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));
+		return (write(1, "1\n", 2),ft_r(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));
 	else if (first < second && second > third && first < third)
-		return (ft_r(NULL, stack, 'b'));
+		return (write(1, "1\n", 2),ft_r(NULL, stack, 'b'));
 	else if (first > second && second < third && first > third)
-		return (ft_rr(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));
+		return (write(1, "1\n", 2),ft_rr(NULL, stack, 'b'), ft_s(NULL, stack, 'b'));
 	else if (first > second && second < third && third < second)
-		return (ft_rr(NULL, stack, 'b'));
+		return (write(1, "1\n", 2),ft_rr(NULL, stack, 'b'));
 	else if (first < second && second > third && first > third)
-		return (ft_s(NULL, stack, 'b'));
+		return (write(1, "1\n", 2),ft_s(NULL, stack, 'b'));
 }
 
 void	sort_three(t_stack **stack)
