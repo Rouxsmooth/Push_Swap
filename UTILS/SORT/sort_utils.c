@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 01:05:40 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/21 13:29:18 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/21 14:25:29 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	partition_a(t_stack **a, t_stack **b, int median)
 	i = 0;
 	while (i < len)
 	{
-		print_stack(*a, "a");
-		print_stack(*b, "b");
+		//print_stack(*a, "a");
+		//print_stack(*b, "b");
 		if (*(int *)(*a)->content <= median && stacksize(*b) < 3)
 			ft_p(a, b, 'b');
 		else
