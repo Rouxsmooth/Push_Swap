@@ -6,11 +6,34 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:50:54 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/22 13:42:51 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/22 14:31:14 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../INCLUDES/push_swap.h"
+
+int	overflows_long(char *str)
+{
+	int	i;
+	int	nbrlen;
+
+	i = 0;
+	nbrlen = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+		{
+			if ((!nbrlen && str[i] != '0') || (nbrlen))
+				nbrlen++;
+			if (nbrlen > 10)
+				return (1);
+		}
+		if (!ft_isdigit(str[i]) && nbrlen)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	right_format_input(char *str)
 {
@@ -72,12 +95,16 @@ int	acavparsing(int argc, char **argv, int *array)
 	i = 0;
 	while (i < argc - 1)
 	{
+		if (!ft_strlen(argv[i + 1]))
+			return (error(), 0);
 		if (has_elsethan(argv[i + 1], &ft_isdigit))
 			if (!right_format_input(argv[i + 1]))
 				return (error(), 0);
 		if (overflows(ft_atol(argv[i + 1])))
 			return (error(), 0);
 		if (already_exists(array, ft_atoi(argv[i + 1]), i))
+			return (error(), 0);
+		if (overflows_long(argv[i + 1]))
 			return (error(), 0);
 		array[i] = ft_atoi(argv[i + 1]);
 		i++;
