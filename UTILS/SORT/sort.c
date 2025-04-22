@@ -6,7 +6,7 @@
 /*   By: mzaian <mzaian@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 04:03:51 by mzaian            #+#    #+#             */
-/*   Updated: 2025/04/21 14:29:29 by mzaian           ###   ########.fr       */
+/*   Updated: 2025/04/22 13:46:41 by mzaian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	sort_three(t_stack **stack)
 	int	third;
 
 	first = *(int *)(*stack)->content;
+	if (!(*stack)->next)
+		return ;
 	second = *(int *)(*stack)->next->content;
 	if (!(*stack)->next->next)
 	{
